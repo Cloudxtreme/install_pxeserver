@@ -1,0 +1,2 @@
+10a11
+> /srv/nfs/i386   *(ro,async,no_root_squash,no_subtree_check)

@@ -1,0 +1,1 @@
+/srv/nfs/live-files/i386   *(ro,async,no_root_squash,no_subtree_check)

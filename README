@@ -1,0 +1,7 @@
+This set of scripts installs and configures the necessary packages to make a PXE server.
+The server provides unpacked live CD images (that is, read-only file systems) via NFS. By default it's configured to provide Xubuntu Trusty.
+
+The main script is called install-pxe-server.sh - it calls the others in order to install the various components.
+install-pxe-server.sh contains the necessary configuration for the entire process. The configuration can be manipulated by changing the values of variables at the top of the file.
+
+Because they installs software and do low-level configuration, the scripts need to run as root. Therefore, you should read them first. It's OK, they are short.
