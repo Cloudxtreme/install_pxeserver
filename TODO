@@ -1,0 +1,9 @@
+20140804 - Refactor script to use dpkg instead of apt-get to fetch and install packages, like so:
+		apt-get --download-only download $PACKAGE
+		dpkg --unpack $PACKAGE
+		alter postinst.sh
+		put it back together and install
+	currently evaluating, this might not be such a good idea...
+
+20141117 - above would be a premature optimization. Use metapackage to install packages, use postinst to 
+set up config files & d/l images, etc. and bobs yr uncle.
