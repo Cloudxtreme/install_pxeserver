@@ -1,0 +1,51 @@
+Template: pxe-server-installer/service-iface
+#Type: [select,multiselect,string,boolean,note,text,password]
+Type: select
+Choices: eth0, eth1, magic, unicorns
+Default: eth0
+Description: Which interface shall listen for clients?
+ This is the interface which will serve the clients. dhcpd will listen on this interface.
+ .
+ When I figure out how to do it, this selection list will be prepopulated
+ with the actual interfaces detected on the system. Until then, it's magic and unicorns.
+
+Template: pxe-install-server/uplink-iface
+Type: select
+Choices: eth0, eth1, magic, unicorns
+Default: none
+Description: Which interface shall connect to the external network?
+ This is the interface which will connect to the Internet in order to fetch updates and such.
+ .
+ This interface will provide http proxy to the clients, so if not configured
+ or left default the clients will have no outside network access. It's a feature!
+ Also, this choice, like the previous, should become prepopulated and 
+ free of unicorn magic.
+
+Template: pxe-install-server/client-arches
+Type: multi-select
+Choices: i386, amd64, armel, m68k, MOS6502, Bucky Fuller
+Default: i386
+Description: For which architectures do you wish to install client images?
+ Ubuntu supports only i386 and amd64 as of this writing. Debian supports many different architectures. Ideally this choice should be prepopulated from an
+ authoritative source.
+ If you don't know the answer, choose both i386 and amd64. If you have room for only one, pick i386. Then get more storage.
+
+Template: pxe-install-server/tftp-url
+Type: string
+Default: http://archive.ubuntu.com/ubuntu/dists/trusty/main/installer-$1/current/images/netboot/
+Description: Where are the PXE files located?
+ We need some files for tftpd to serve our clients that they may boot over the network.
+ .
+ If you don't know the answer, leave the default and it will download the PXE files from Ubuntu.
+ Otherwise, enter the URL of the files.
+
+Template: pxe-install-server/image-url
+Type: string
+Default: http://cdimage.ubuntu.com/xubuntu/releases/14.04/release/
+Description: Where is the image file located?
+ Once the clients have begun to boot, we need to provide a live image for them to use.
+ .
+ If you don't know the answer, leave the default and it will download the image from Ubuntu.
+ Otherwise, enter the URL of the files.
+
+
