@@ -4,27 +4,12 @@ The server provides unpacked live CD images (that is, read-only file systems) vi
 The configuration of DHCP server and of NFS server is implemented in alternate config files.
 This way the original configs need not be touched. rc-scripts will need to use -cf flag for dhcpd 
 
-#!/bin/bash
-	
-	#set up files for architecture
-	
-	# set up PXE files
-	
-	## check if files exist in the right spots
-	
-	## if not there, download them
-	
-	cd $IMG_PATH/
-	if ! [ -e $IMG_PATH/net* ]
-	then wget -r -nH --reject index* --cut-dirs=7 http://archive.ubuntu.com/ubuntu/dists/trusty/main/installer-$1/current/images/netboot/
-	
+Following is leftover stuff from the old scripts. Remove as practicable.
+
+
+        wget -r -nH --reject index* --cut-dirs=7 http://archive.ubuntu.com/ubuntu/dists/trusty/main/installer-$1/current/images/netboot/
 	rm ./*.gif
-	fi
-	
-	if ! [ -e $TFTP_PATH/$1/ ]
-	then
-	cp -av $IMG_PATH/netboot/* ../tftp/$1/
-	fi
+		
 	
 	## set up mybootmenu.cfg
 	
@@ -37,27 +22,11 @@ This way the original configs need not be touched. rc-scripts will need to use -
 	kernel ubuntu-livecd-boot/amd64/vmlinuz
 	append boot=casper netboot=nfs nfsroot=192.168.0.1:/srv/nfs/live-files/amd64 initrd=ubuntu-livecd-boot/amd64/initrd.lz -- splash quiet
 	
-	## copy mybootmenu.cfg to the right place(s)
 	
 	
 	
-	# set up NFS files
-	
-	## image files
-	### detect, download, install
-	
-	./nfs+.sh
-	
-	### or use debootstrap?
-	
-	## set up /etc/exports
-	
-	cp /etc/exports $SCRIPT_PATH/exports.orig-config
 	grep $1 /etc/exports || echo "$NFS_PATH/$1 *(ro,async,no_root_squash,no_subtree_check)" >> /etc/exports
 	
-	#/bin/bash
-#configure NFS
-#rm /etc/exports
 ISO_URL="http://cdimage.ubuntu.com/xubuntu/releases/14.04/release/"
 ISO_NAME="xubuntu-14.04-desktop-$1.iso"
 
@@ -75,9 +44,7 @@ then
     cp -av $1-temp/ /srv/nfs/$1/
 fi
 
-cd $SCRIPT_PATH
-#cp /etc/exports /etc/exports.old
-patch /etc/exports ./exports-patch/srv/nfs/live-files/i386   *(ro,async,no_root_squash,no_subtree_check)
+
 menu hshift 13
 menu width 49
 menu margin 8

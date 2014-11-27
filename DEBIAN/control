@@ -4,7 +4,7 @@ Section: main
 Priority: optional
 Architecture: any
 Depends: isc-dhcp-server, tftpd-hpa, nfs-kernel-server, squid
-Installed-Size:
+Installed-Size: 7175
 Maintainer: koanhead
 Description: Installs and sets up network install server
  Detailed description Sets up a PXE install server using NFS to provide unpacked ISO images. Provides Xubuntu LTS by default.

@@ -1,5 +1,4 @@
 Template: pxe-server-installer/service-iface
-#Type: [select,multiselect,string,boolean,note,text,password]
 Type: select
 Choices: eth0, eth1, magic, unicorns
 Default: eth0
@@ -47,5 +46,3 @@ Description: Where is the image file located?
  .
  If you don't know the answer, leave the default and it will download the image from Ubuntu.
  Otherwise, enter the URL of the files.
-
-
