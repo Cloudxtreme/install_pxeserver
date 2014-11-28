@@ -1,6 +1,6 @@
 Package: pxe-install-server
 Version: 0.10
-Section: main
+Section: metapackages
 Priority: optional
 Architecture: any
 Depends: isc-dhcp-server, tftpd-hpa, nfs-kernel-server, squid
